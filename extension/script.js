@@ -10,11 +10,29 @@ function inject_menu() {
 }
 
 function inject_quiz_iframe() {
+  const container = document.createElement('div');
+  container.setAttribute('id', 'LearnMate_quiz_container');
   const iframe = document.createElement('iframe');
   iframe.setAttribute('id', 'LearnMate_quiz_iframe');
+  iframe.setAttribute('name', 'LearnMate_quiz_iframe');
   iframe.setAttribute('src', chrome.runtime.getURL('static/quiz_iframe.html'));
-  document.body.appendChild(iframe);
+  const closeButton = document.createElement('div');
+  closeButton.className = 'close-button';
+  closeButton.style = 'position: absolute; top: 7px; right: 5px; width: 20px; height: 20px; cursor: pointer; z-index: 1002';
+  const closeButtonImage = document.createElement('img');
+  closeButtonImage.src = chrome.runtime.getURL('static/close_button.png');
+  closeButtonImage.alt = 'Close';
+  closeButtonImage.style = 'width: 100%; height: 100%;'
+  closeButton.appendChild(closeButtonImage);
+  closeButton.addEventListener('click', () => {
+    iframe.remove();
+    closeButton.remove();
+  });
+  container.appendChild(iframe);
+  container.appendChild(closeButton);
+  document.body.appendChild(container);
 }
+
 
 function enable_quiz() {
   alert('quiz enabled');

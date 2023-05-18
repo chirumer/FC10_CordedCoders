@@ -2,47 +2,75 @@ fetch('http://127.0.0.1:5001/get_questions').then((response) => {
   response.json().then((data) => {
 
 
+    let quizData = [];
+
+    data.questions.forEach((question) => {
+      quizData.push({
+        question: question.question,
+        answers: [
+          {
+            id: 1,
+            label: question.choices[0],
+            correct: question.answer == 0,
+          },
+          {
+            id: 2,
+            label: question.choices[1],
+            correct: question.answer == 1,
+          },
+          {
+            id: 3,
+            label: question.choices[2],
+            correct: question.answer == 2,
+          },
+          {
+            id: 4,
+            label: question.choices[3],
+            correct: question.answer == 3,
+          }
+        ]
+      });
+    });
 
 
 
-
-    const quizData = [
-      {
-        question: "In JavaScript, what value is returned by default when a function doesn't have a return statement?",
-        answers: [
-          { id: 1, label: "0", correct: false },
-          { id: 2, label: "null", correct: false },
-          { id: 3, label: "undefined", correct: true },
-          { id: 4, label: "-1", correct: false }
-        ]
-      },
-      {
-        question: "How to write an IF statement in JavaScript?",
-        answers: [
-          { id: 1, label: "if i = 5", correct: false },
-          { id: 2, label: "if (i == 5)", correct: true },
-          { id: 3, label: "if i == 5 then", correct: false }
-        ]
-      },
-      {
-        question: "Which event occurs when the user clicks on an HTML element?",
-        answers: [
-          { id: 1, label: "onmouseover", correct: false },
-          { id: 2, label: "onclick", correct: true },
-          { id: 3, label: "onchange", correct: false },
-          { id: 4, label: "onmouseclick", correct: false }
-        ]
-      },
-      {
-        question: "What does SCSS stand for?",
-        answers: [
-          { id: 1, label: "Sassy CSS", correct: true },
-          { id: 2, label: "Super-powered CSS", correct: false },
-          { id: 3, label: "Sass CSS", correct: false },
-          { id: 4, label: "Syntactic CSS", correct: false }
-        ]
-      }
-    ];
+    // const quizData = [
+    //   {
+    //     question: "In JavaScript, what value is returned by default when a function doesn't have a return statement?",
+    //     answers: [
+    //       { id: 1, label: "0", correct: false },
+    //       { id: 2, label: "null", correct: false },
+    //       { id: 3, label: "undefined", correct: true },
+    //       { id: 4, label: "-1", correct: false }
+    //     ]
+    //   },
+    //   {
+    //     question: "How to write an IF statement in JavaScript?",
+    //     answers: [
+    //       { id: 1, label: "if i = 5", correct: false },
+    //       { id: 2, label: "if (i == 5)", correct: true },
+    //       { id: 3, label: "if i == 5 then", correct: false }
+    //     ]
+    //   },
+    //   {
+    //     question: "Which event occurs when the user clicks on an HTML element?",
+    //     answers: [
+    //       { id: 1, label: "onmouseover", correct: false },
+    //       { id: 2, label: "onclick", correct: true },
+    //       { id: 3, label: "onchange", correct: false },
+    //       { id: 4, label: "onmouseclick", correct: false }
+    //     ]
+    //   },
+    //   {
+    //     question: "What does SCSS stand for?",
+    //     answers: [
+    //       { id: 1, label: "Sassy CSS", correct: true },
+    //       { id: 2, label: "Super-powered CSS", correct: false },
+    //       { id: 3, label: "Sass CSS", correct: false },
+    //       { id: 4, label: "Syntactic CSS", correct: false }
+    //     ]
+    //   }
+    // ];
     
     const quizFormElem = document.getElementById("quiz-form");
     const quizContainerElem = document.getElementById("quiz-container");
@@ -67,7 +95,10 @@ fetch('http://127.0.0.1:5001/get_questions').then((response) => {
         intervalId = null;
         
         quizContainerElem.innerHTML = evaluateScore(quizScore, quizData.length);
-      } else {
+        document.getElementById('quiz_next_btn').remove();
+
+      } 
+       else {
         renderQuiz(quizData[quizIndex], quizIndex);
       }
     });
@@ -76,17 +107,6 @@ fetch('http://127.0.0.1:5001/get_questions').then((response) => {
       e.target.classList.add("hide");
       quizFormElem.classList.remove("hide");
       
-      setTimer();
-      
-      renderQuiz(quizData[quizIndex], quizIndex);
-    });
-    
-    quizRestartBtn.addEventListener("click", () => {
-      quizIndex = 0;
-      quizScore = 0;
-      
-      clearInterval(intervalId);
-      intervalId = null;
       setTimer();
       
       renderQuiz(quizData[quizIndex], quizIndex);
