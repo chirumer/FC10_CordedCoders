@@ -1,4 +1,14 @@
 @import "https://unpkg.com/open-props";
+
+
+* {
+  font-size: larger;
+}
+
+#quiz-start-btn {
+  font-size: xx-large;
+}
+
 /*------------------------------------*\
   #RESET
 \*------------------------------------*/
