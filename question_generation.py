@@ -1,5 +1,5 @@
 from summarizer import Summarizer
-from transformers import logging, AutoConfig, AutoTokenizer, AutoModel
+from transformers import AutoConfig, AutoTokenizer, AutoModel
 import nltk
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
