@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
+from urllib.parse import urlparse
 
-from question_generation import generate_questions
+from wikipedia_questions import questions_from_wiki_page
 
 app = Flask(__name__)
 CORS(app)
@@ -14,15 +15,16 @@ def hello():
 f = open('notebooks/sample.txt', 'r')
 t = f.read()
 
-@app.route('/generate_questions/<link>')
-def generate_questions_route(link):
-  # f = open('notebooks/sample.txt', 'r')
-  # t = f.read()
-  # print(t)
-  q = generate_questions(t)
-  # print(q)
-  print('lol')
-  return  q
+@app.route('/generate_questions')
+def generate_questions_route():
+
+  url = urlparse(request.args.get("url"))
+
+  if url.hostname.endswith('wikipedia.org'):
+    return questions_from_wiki_page(url)
+
+  return 'unsupported'
+
 
 if __name__ == '__main__':
-	app.run(debug=True, port=5001)
+	app.run(port=5001)
