@@ -184,7 +184,7 @@ def generate_questions(full_text):
     top4choices = choices[:4]
     random.shuffle(top4choices)
     question["choices"] = top4choices
-    question["answer"] = choices.index(each.capitalize())
+    question["answer"] = top4choices.index(each.capitalize())
 
     questions.append(question)
   
