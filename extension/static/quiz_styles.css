@@ -1,3 +1,145 @@
+@import "https://unpkg.com/open-props";
+/*------------------------------------*\
+  #RESET
+\*------------------------------------*/
+:root {
+  --clr-primary: var(--blue-8);
+  
+  --clr-neutral-500: #1c232b;
+  --clr-neutral-400: #28323E;
+  --clr-neutral-300: #384656;
+  --clr-neutral-200: #51657B;
+  --clr-neutral-100: #E6EAEF;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
 body {
-  background-color: blue;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  
+  background-color: var(--clr-neutral-500);
+  color: var(--clr-neutral-100);
+  accent-color: var(--clr-primary);
+  
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*------------------------------------*\
+  #UTILITIES
+\*------------------------------------*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  border: 1px solid var(--clr-neutral-300);
+  border-radius: var(--radius-2);
+  padding: 0.6em 1.4em;
+  
+  background-color: transparent;
+  color: var(--clr-neutral-100);
+  
+  font-weight: var(--font-weight-6);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  cursor: pointer;
+}
+
+.btn:is(:hover, :focus-visible) {
+  background-color: var(--clr-neutral-400);
+}
+
+/*------------------------------------*\
+  #QUIZ
+\*------------------------------------*/
+.quiz {
+  display: grid;
+  gap: var(--size-4);
+  
+  width: min(100% - 1rem, 40rem);
+  margin-block: 2rem;
+  padding: var(--size-4);
+  
+  border: 1px solid var(--clr-neutral-300);
+  border-radius: var(--radius-2);
+}
+
+#quiz-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.quiz__answers {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.quiz__answer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-color: var(--clr-neutral-400);
+  padding-inline: 0.5em;
+  border-radius: var(--radius-2);
+  border: 1px solid var(--clr-neutral-300);
+  overflow: hidden;
+}
+
+.quiz__answer:is(:hover, :focus-within) {
+  background-color: var(--clr-neutral-300);
+}
+
+.quiz__answer > label {
+  padding: 0.5em 1em;
+}
+
+.quiz__info {
+  display: grid;
+  gap: var(--size-2);
+  align-items: center;
+  justify-items: center;
+}
+
+@media (min-width: 30em) {
+  .quiz__info {
+    justify-items: start;
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.quiz__time {
+  font-family: var(--font-mono);
+}
+
+.hide {
+  display: none;
 }

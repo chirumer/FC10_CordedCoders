@@ -11,6 +11,9 @@ app = Flask(__name__)
 CORS(app)
 
 
+questions = []
+
+
 @app.route('/')
 def hello():
     return 'server active'
@@ -28,7 +31,16 @@ def generate_questions_route():
   soup = BeautifulSoup(html, 'html.parser')
   text = ''.join([i.getText() for i in soup.findAll('p')])
 
-  return generate_questions(text[:10240])
+  global questions 
+  questions = generate_questions(text[:10240])
+
+  return 'ok'
+
+@app.route('/get_questions')
+def get_questions():
+  return {
+    'questions': questions
+  }
 
 
 if __name__ == '__main__':

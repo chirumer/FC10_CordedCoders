@@ -5,9 +5,61 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="quiz_styles.css">
+  <script src="quiz_script.js"></script>
   <title>Document</title>
 </head>
 <body>
-  hi there
+
+
+
+
+
+
+  <button class="btn" id="quiz-start-btn">Start</button>
+
+  <form class="quiz hide" id="quiz-form">
+    <div id="quiz-container">
+      <!-- for reference
+      <h3 class="quiz__question"><span class="quiz__number">1.</span> Question 1</h3>
+      <div class="quiz__answers">
+        <div class="quiz__answer">
+          <input type="radio" id="answer1" name="answer" data-correct="false" required />
+          <label for="answer1">Answer 1</label>
+        </div>
+  
+        <div class="quiz__answer">
+          <input type="radio" id="answer2" name="answer" data-correct="true" />
+          <label for="answer2">Answer 2</label>
+        </div>
+  
+        <div class="quiz__answer">
+          <input type="radio" id="answer3" name="answer" data-correct="false" />
+          <label for="answer3">Answer 3</label>
+        </div>
+  
+        <div class="quiz__answer">
+          <input type="radio" id="answer4" name="answer" data-correct="false" />
+          <label for="answer4">Answer 4</label>
+        </div>
+      </div> 
+      -->
+    </div>
+    <div class="quiz__info">
+      <p class="quiz__time" id="quiz-timer">00:00</p>
+      <div class="button-group">
+        <button class="quiz__reset btn" id="quiz-restart-btn" data-type="warning" type="button">Restart</button>
+        <button class="quiz__next btn" data-type="primary" type="submit">Next</button>
+      </div>
+    </div>
+  </form>
+
+
+
+
+
+
+
+
 </body>
 </html>
+
