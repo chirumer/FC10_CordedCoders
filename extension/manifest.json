@@ -11,5 +11,9 @@
       "js": ["script.js"],
       "css": ["styles.css"]
     }
-  ]
+  ],
+  "web_accessible_resources": [{
+    "matches": ["<all_urls>"],
+    "resources": ["menu_image.gif"]
+  }]
 }
