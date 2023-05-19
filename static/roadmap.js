@@ -168,7 +168,7 @@ function deg(radians) {
 
 async function generate_html() {
 
-  const data = await (await fetch('http://127.0.0.1:8250/roadmap_info?' + (new URLSearchParams(window.location.search)).toString())).json();
+  const data = await (await fetch('http://127.0.0.1:5001/roadmap_info?' + (new URLSearchParams(window.location.search)).toString())).json();
   console.log(data);
   htlevel = ""
   htchild = ""

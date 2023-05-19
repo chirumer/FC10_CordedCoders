@@ -39,6 +39,9 @@ def generate_questions_route():
     
     questions = generate_questions_from_youtube(url)
     return 'ok'
+  
+  elif parsed_url.hostname.startswith('http://127.0.0.1:5001/'):
+     return 'unsupported', 400
 
   html = urlopen(url) 
   soup = BeautifulSoup(html, 'html.parser')
