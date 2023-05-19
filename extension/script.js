@@ -22,9 +22,24 @@ function create_chatBubble() {
 
   const button = document.createElement("button");
   button.textContent = "<Take Quiz>";
+
+  button.addEventListener('click', () => {
+    if (quiz_enabled == 'true') {
+      inject_quiz_iframe();
+    }
+    else if (quiz_enabled == 'failed') {
+      alert('Quiz failed to generate. Website markup unsuitable for quiz generation.');
+    }
+    else {
+      alert('Generating quiz...');
+    }
+  });
+
   paragraph.appendChild(button);
 
-  paragraph.innerHTML += ("<br>Search another topic:<br>");
+  const srch_txt = document.createElement("div");
+  srch_txt.innerHTML = "<br>Search another topic:<br>";
+  paragraph.appendChild(srch_txt);
 
   const text = document.createElement("input");
   text.type = "text";
@@ -35,7 +50,7 @@ function create_chatBubble() {
   });
   
   const button2 = document.createElement("button");
-  button2.textContent = "Search";
+  button2.textContent = "<Search>";
   paragraph.appendChild(button2);
 
   button2.addEventListener("click", () => {
@@ -49,18 +64,6 @@ function create_chatBubble() {
 
   // Append the talk text div element to the main div element.
   div.appendChild(talkTextDiv);
-
-  button.addEventListener('click', () => {
-    if (quiz_enabled == 'true') {
-      inject_quiz_iframe();
-    }
-    else if (quiz_enabled == 'failed') {
-      alert('Quiz failed to generate. Website markup unsuitable for quiz generation.');
-    }
-    else {
-      alert('Generating quiz...');
-    }
-  });
 
   return div;
 }
@@ -77,7 +80,7 @@ function inject_menu() {
   bubble.style.display = 'none';
   menu.addEventListener('click', () => {
     if (bubble.style.display === 'block') {
-      bubble.style.display = 'none';
+      // bubble.style.display = 'none';
     }
     else {
       bubble.style.display = 'block';
