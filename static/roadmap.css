@@ -1,0 +1,225 @@
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #2d3142;
+  font-family: Garamond;
+}
+.container {
+  text-align: center;
+  line-height: 48px;
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.elem {
+  display: block;
+  text-align: center;
+  line-height: 20px;
+  font-size: 15px;
+  position: absolute;
+  border-radius: 4px;
+  z-index: 3;
+  padding: 10px 15px;
+  transition: background-color 0.2s;
+}
+.level0 {
+  background-color: #6290c3;
+  color: #2d3142;
+  font-style: bold;
+  transition: all 0.5s;
+}
+.level0:hover {
+  background-color: #4e739c;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.level1 {
+  background-color: #b0d7ff;
+  color: #2d3142;
+  transition: all 0.5s;
+  padding: 10px 18px;
+  transition: background-color 0.2s;
+  border-radius: 0.2s;
+  /*color: white;
+  background: rgba(0,0,0,0);*/
+}
+.level1:hover {
+  transition: background-color 0.2s, border-radius 0.2s;
+  background-color: #7b96b2;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.line {
+  transform-origin: 0 0;
+  position: absolute;
+  border: #adacb5 1px solid;
+  height: 0px;
+  transition: all 0.5s;
+  z-index: 1;
+}
+.hiddenLevel1 {
+  z-index: 1;
+  top: 50% !important;
+  left: 50% !important;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%) rotate(180deg);
+  transition: all 0.5s;
+}
+.hiddenLevel1:hover {
+  cursor: auto;
+}
+.hiddenLine {
+  /* !important because width was originally set by js */
+  width: 0 !important;
+  border: 0 rgba(0, 0, 0, 0) solid;
+  transition: all 0.4s;
+}
+/*............*/
+.post-badge {
+  font-size: 0;
+  display: inline-block;
+  color: red;
+  text-decoration: none;
+  transition: font-size 0.3s ease-in;
+  line-height: 1;
+}
+.post-badge::first-letter {
+  font-size: 50px;
+}
+.slide {
+  height: 50px;
+  width: 100px;
+  background-color: #f5f5f5;
+}
+.btn_six:hover {
+  visibility: visible;
+  font-size: 50px;
+  color: green;
+}
+  /**************/
+.level2 {
+  z-index: 1;
+  white-space: nowrap;
+  color: #2d3142;
+  padding: 4px 8px;
+  background-color: #dfefff;
+  transition: all 0.5s;
+  font-size: 8px
+}
+.level2:hover {
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 999;
+  font-size: 16px;
+  line-height: 35px;
+  font-size: 20px;
+  height: 50px;
+  top: 50% ;
+  left: 50% ;
+  
+
+  background-color: #ffffff;
+}
+.hiddenLevel2 {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+.hiddenLevel2:hover {
+  cursor: default;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar {
+  background-color: rgb(22, 7, 36);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 5rem;
+}
+
+.left h1 {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.checkBtn {
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+.checkBtn {
+  cursor: pointer;
+  font-size: 30px;
+  float: right;
+  color: #ed1e79;
+  line-height: 80px;
+}
+
+.right ul {
+  display: flex;
+  list-style: none;
+}
+
+.right ul li a {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 1s;
+}
+
+.right ul li a:hover {
+  background-color: #fff;
+  border-radius: 7px;
+  color: rgb(22, 7, 36);
+}
+
+@media screen and (max-width:805px) {
+  .list {
+      width: 100%;
+      height: 100vh;
+      background-color: rgb(22, 7, 36);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 4rem;
+      left: 100%;
+      transition: all 1s;
+  }
+
+  #check {
+      display: none;
+  }
+
+  .checkBtn {
+      display: block;
+  }
+
+  #check:checked~ul {
+      left: 0%;
+  }
+
+}
+
