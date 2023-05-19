@@ -22,8 +22,27 @@ function create_chatBubble() {
 
   const button = document.createElement("button");
   button.textContent = "<Take Quiz>";
-
   paragraph.appendChild(button);
+
+  paragraph.innerHTML += ("<br>Search another topic:<br>");
+
+  const text = document.createElement("input");
+  text.type = "text";
+  paragraph.appendChild(text);
+
+  text.addEventListener("click", event => {
+    event.stopPropagation();
+  });
+  
+  const button2 = document.createElement("button");
+  button2.textContent = "Search";
+  paragraph.appendChild(button2);
+
+  button2.addEventListener("click", () => {
+    const val = text.value;
+    const url = 'http://127.0.0.1:5001/roadmap?' + (new URLSearchParams({ topic: val })).toString();
+    window.location.replace(url);
+  });
 
   // Append the paragraph element to the talk text div element.
   talkTextDiv.appendChild(paragraph);
