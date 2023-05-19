@@ -34,8 +34,9 @@
 
 
 #talkbubble {
-  top: -200px;
-  right: -200px;;
+  position: absolute;
+  bottom: 100px;
+  left: 40px;
 }
 
 
@@ -45,7 +46,7 @@
   position: relative;
 	width: 200px;
 	height: auto;
-	background-color: lightyellow;
+	background-color: lightgreen;
 }
 .border{
   border: 8px solid #666;
@@ -80,7 +81,7 @@
   top: 0px;
 	bottom: auto;
 	border: 22px solid;
-	border-color: lightyellow transparent transparent transparent;
+	border-color: lightgreen transparent transparent transparent;
 }
 
 /* Right triangle, left side slightly down */
@@ -106,7 +107,7 @@
   top: 38px;
 	bottom: auto;
 	border: 12px solid;
-	border-color: lightyellow lightyellow transparent transparent;
+	border-color: lightgreen lightgreen transparent transparent;
 }
 
 /*Right triangle, placed bottom left side slightly in*/
@@ -132,7 +133,7 @@
   top: auto;
 	bottom: -20px;
 	border: 22px solid;
-	border-color: transparent transparent transparent lightyellow;
+	border-color: transparent transparent transparent lightgreen;
 }
 
 /*Right triangle, placed bottom left side slightly in*/
@@ -158,7 +159,7 @@
   top: auto;
 	bottom: -20px;
 	border: 12px solid;
-	border-color: lightyellow transparent transparent lightyellow;
+	border-color: lightgreen transparent transparent lightgreen;
 }
 
 /*Right triangle, placed bottom right side slightly in*/
@@ -182,7 +183,7 @@
 	right: 38px;
 	bottom: -20px;
 	border: 12px solid;
-	border-color: lightyellow lightyellow transparent transparent;
+	border-color: lightgreen lightgreen transparent transparent;
 }
 /*
 	left: -8px;
@@ -196,7 +197,7 @@
   top: auto;
 	bottom: -20px;
 	border: 22px solid;
-	border-color: transparent transparent transparent lightyellow;
+	border-color: transparent transparent transparent lightgreen;
 
 /*Right triangle, placed bottom right side slightly in*/
 .tri-right.border.btm-right:before {
@@ -219,7 +220,7 @@
 	right: 0px;
 	bottom: -20px;
 	border: 12px solid;
-	border-color: lightyellow lightyellow transparent transparent;
+	border-color: lightgreen lightgreen transparent transparent;
 }
 
 /* Right triangle, right side slightly down*/
@@ -245,7 +246,7 @@
   top: 38px;
 	bottom: auto;
 	border: 12px solid;
-	border-color: lightyellow transparent transparent lightyellow;
+	border-color: lightgreen transparent transparent lightgreen;
 }
 
 /* Right triangle placed top right flush. */
@@ -271,7 +272,7 @@
   top: 0px;
 	bottom: auto;
 	border: 20px solid;
-	border-color: lightyellow transparent transparent transparent;
+	border-color: lightgreen transparent transparent transparent;
 }
 
 /* talk bubble contents */

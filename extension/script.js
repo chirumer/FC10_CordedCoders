@@ -1,3 +1,5 @@
+let quiz_enabled = false
+
 function create_chatBubble() {
   const div = document.createElement("div");
 
@@ -16,13 +18,27 @@ function create_chatBubble() {
   const paragraph = document.createElement("p");
 
   // Set the text content of the paragraph element.
-  paragraph.innerHTML = "Take a Quiz on this topic! <button>Take Quiz (processing)</button> <br> Take a Quiz on this topic! <button>Take Quiz (processing)</button>"; 
+  paragraph.innerHTML = "Take a Quiz on this topic! <br>"; 
+
+  const button = document.createElement("button");
+  button.textContent = "Take Quiz";
+
+  paragraph.appendChild(button);
 
   // Append the paragraph element to the talk text div element.
   talkTextDiv.appendChild(paragraph);
 
   // Append the talk text div element to the main div element.
   div.appendChild(talkTextDiv);
+
+  button.addEventListener('click', () => {
+    if (quiz_enabled) {
+      inject_quiz_iframe();
+    }
+    else {
+      alert('Generating quiz...');
+    }
+  });
 
   return div;
 }
@@ -35,7 +51,17 @@ function inject_menu() {
   menu.innerHTML = `
     <img id="LearnMate_img" src="${img_url}" />
   `;
-  menu.appendChild(create_chatBubble());
+  const bubble = create_chatBubble()
+  bubble.style.display = 'none';
+  menu.addEventListener('click', () => {
+    if (bubble.style.display === 'block') {
+      bubble.style.display = 'none';
+    }
+    else {
+      bubble.style.display = 'block';
+    }
+  });
+  menu.appendChild(bubble);
   document.body.appendChild(menu);
 }
 
@@ -65,12 +91,7 @@ function inject_quiz_iframe() {
 
 
 function enable_quiz() {
-  // alert('quiz enabled');
-  // fetch('http://127.0.0.1:5001/get_questions').then((response) => {
-  //   response.json().then((data) => {
-  //     console.log(data);
-  //   });
-  // });
+  quiz_enabled = true;
 }
 
 
