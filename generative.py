@@ -54,8 +54,6 @@ def generate_questions(response):
           'choices': []
       }
     elif i.startswith('A'):
-      print(i)
-      print(clean(i))
       question['answer'] = int(clean(i)[0])-1
     elif i and i[0].isnumeric():
       question['choices'].append(clean(i))
