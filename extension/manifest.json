@@ -3,7 +3,6 @@
   "name": "LearnMate",
   "version": "1.0.1",
   "action": {
-    "default_popup": "search.html",
     "default_icon": "static/icon.png"
   },
   "content_scripts": [
