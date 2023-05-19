@@ -1,4 +1,4 @@
-let quiz_enabled = false
+let quiz_enabled = 'false'
 
 function create_chatBubble() {
   const div = document.createElement("div");
@@ -32,8 +32,11 @@ function create_chatBubble() {
   div.appendChild(talkTextDiv);
 
   button.addEventListener('click', () => {
-    if (quiz_enabled) {
+    if (quiz_enabled == 'true') {
       inject_quiz_iframe();
+    }
+    else if (quiz_enabled == 'failed') {
+      alert('Quiz failed to generate. Website markup unsuitable for quiz generation.');
     }
     else {
       alert('Generating quiz...');
@@ -91,7 +94,11 @@ function inject_quiz_iframe() {
 
 
 function enable_quiz() {
-  quiz_enabled = true;
+  quiz_enabled = 'true';
+}
+
+function fail_quiz() {
+  quiz_enabled = 'failed';
 }
 
 
@@ -106,8 +113,13 @@ function main() {
   inject_menu();
 
   const generate_questions = 'http://127.0.0.1:5001/generate_questions?' + (new URLSearchParams({url: window.location.href}).toString())
-  fetch(generate_questions).then(() => {
-    enable_quiz();
+  fetch(generate_questions).then((response) => {
+    if (response.ok) {
+      enable_quiz();
+    }
+    else {
+      fail_quiz();
+    }
   });
 
   // const generate_roadmap = 'http://127.0.0.1:5001/generate_questions?' + (new URLSearchParams({url: 'https://en.wikipedia.org/wiki/Gun#History'}).toString())
