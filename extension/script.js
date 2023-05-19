@@ -21,7 +21,7 @@ function create_chatBubble() {
   paragraph.innerHTML = "Take a Quiz on this topic! <br>"; 
 
   const button = document.createElement("button");
-  button.textContent = "Take Quiz";
+  button.textContent = "<Take Quiz>";
 
   paragraph.appendChild(button);
 

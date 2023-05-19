@@ -15,10 +15,10 @@
 :root {
   --clr-primary: var(--blue-8);
   
-  --clr-neutral-500: #1c232b;
-  --clr-neutral-400: #28323E;
-  --clr-neutral-300: #384656;
-  --clr-neutral-200: #51657B;
+  --clr-neutral-500: #009E73;
+  --clr-neutral-400: #43BD38;
+  --clr-neutral-300: #72D54B;
+  --clr-neutral-200: #A2E769;
   --clr-neutral-100: #E6EAEF;
 }
 
