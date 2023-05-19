@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
 from question_generation import generate_questions
-from youtube_generation import generate_questions_from_youtube
+from youtube_questions import generate_questions_from_youtube
 
 app = Flask(__name__)
 CORS(app)
@@ -20,18 +20,20 @@ def hello():
 
 @app.route('/generate_questions')
 def generate_questions_route():
+  global questions
 
   url = request.args.get("url")
-
+  
   parsed_url = urlparse(url)
   if parsed_url.hostname == 'www.youtube.com':
-    return generate_questions_from_youtube(url)
+    
+    questions = generate_questions_from_youtube(url)
+    return 'ok'
 
   html = urlopen(url) 
   soup = BeautifulSoup(html, 'html.parser')
   text = ''.join([i.getText() for i in soup.findAll('p')])
 
-  global questions 
   questions = generate_questions(text[:10240])
 
   return 'ok'
