@@ -80,7 +80,7 @@ function inject_menu() {
   bubble.style.display = 'none';
   menu.addEventListener('click', () => {
     if (bubble.style.display === 'block') {
-      // bubble.style.display = 'none';
+      bubble.style.display = 'none';
     }
     else {
       bubble.style.display = 'block';
